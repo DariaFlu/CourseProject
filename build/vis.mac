@@ -1,0 +1,343 @@
+# Macro file for the visualization setting in the initialization phase
+# of the B1 example when running in interactive mode
+#
+
+# Use these open statements to open selected visualization
+#
+# Use this open statement to create an OpenGL view:
+/vis/open OGL 600x600-0+0
+#
+# Use this open statement to create an OpenInventor view:
+#/vis/open OI
+#
+# Use this open statement to create a .prim file suitable for
+# viewing in DAWN:
+#/vis/open DAWNFILE
+#
+# Use this open statement to create a .heprep file suitable for
+# viewing in HepRApp:
+#/vis/open HepRepFile
+#
+# Use this open statement to create a .wrl file suitable for
+# viewing in a VRML viewer:
+#/vis/open VRML2FILE
+#
+# Disable auto refresh and quieten vis messages whilst scene and
+# trajectories are established:
+/vis/viewer/set/autoRefresh false
+####################
+/tracking/verbose 0
+#/gps/verbose 0
+/vis/verbose 0
+/run/verbose 0
+/control/verbose 0
+##################
+#/vis/verbose errors
+#/vis/verbose 0
+
+#
+# Draw geometry:
+/vis/drawVolume
+#
+# Specify view angle:
+/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+#
+# Specify style (surface, wireframe, auxiliary edges,...)
+/vis/viewer/set/style wireframe
+/vis/viewer/set/auxiliaryEdge true
+/vis/viewer/set/lineSegmentsPerCircle 100
+/vis/viewer/set/background white
+#
+# Draw smooth trajectories at end of event, showing trajectory points
+# as markers 2 pixels wide:
+###UNCOMMENT NEXT 4 LINES TO VIS TRACKS / COMMENT TO MAKE FAST SIMULATION
+###/vis/scene/add/trajectories
+###/vis/modeling/trajectories/create/drawByCharge
+###/vis/modeling/trajectories/drawByCharge-0/default/setDrawStepPts true
+###/vis/modeling/trajectories/drawByCharge-0/default/setStepPtsSize 2
+ #(if too many tracks cause core dump => /tracking/storeTrajectory 0)
+#/tracking/storeTrajectory 0
+#
+# Draw hits at end of event:
+#/vis/scene/add/hits
+#
+# To draw only gammas:
+#/vis/filtering/trajectories/create/particleFilter
+#/vis/filtering/trajectories/particleFilter-0/add gamma
+#
+# To invert the above, drawing all particles except gammas,
+# keep the above two lines but also add:
+#/vis/filtering/trajectories/particleFilter-0/invert true
+#
+# Many other options are available with /vis/modeling and /vis/filtering.
+# For example, to select colour by particle ID:
+#/vis/modeling/trajectories/create/drawByParticleID
+#/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts true
+# To select or override default colours (note: e+ is blue by default):
+#/vis/modeling/trajectories/list
+#/vis/modeling/trajectories/drawByParticleID-0/set e+ yellow
+#
+# To superimpose all of the events from a given run:
+/vis/scene/endOfEventAction accumulate
+#
+# Decorations
+# Name
+#/vis/set/textColour green
+#/vis/set/textLayout right
+#/vis/scene/add/text2D 0.9 -.9 24 ! ! exampleB1
+# or, if your system does not support right-adjustment
+#/vis/scene/add/text2D 0 -.9 24 ! ! exampleB1
+#/vis/set/textLayout    # Revert to normal (left adjusted) layout
+#/vis/set/textColour    # Revert to default text colour (blue)
+#
+# Axes, scale, etc.
+#/vis/scene/add/scale   # Simple scale line
+#/vis/scene/add/axes    # Simple axes: x=red, y=green, z=blue.
+#/vis/scene/add/eventID # Drawn at end of event
+#/vis/scene/add/date    # Date stamp
+#/vis/scene/add/logo2D  # Simple logo
+#/vis/scene/add/logo    # 3D logo
+#
+# Frame
+/vis/set/colour red
+/vis/set/lineWidth 2
+/vis/scene/add/frame   # Simple frame around the view
+/vis/set/colour        # Revert to default colour (white)
+/vis/set/lineWidth     # Revert to default line width (1.)
+#
+# Attach text to one edge of Shape1, with a small, fixed offset
+#/vis/scene/add/text 0 6 -4 cm 18 4 4 Shape1
+# Attach text to one corner of Shape2, with a small, fixed offset
+#/vis/scene/add/text 6 7 10 cm 18 4 4 Shape2
+#
+# To get nice view
+# Make the "World" box invisible
+#/vis/geometry/set/visibility World 0 false
+# "Envelope" is transparent blue to represent water
+/vis/geometry/set/colour pmma_log 0 1 0 1 .3
+/vis/geometry/set/colour air_log 0 0 1 1 .3
+/vis/geometry/set/colour graphite_log 0 1 0 0 .3
+/vis/geometry/set/colour  World 0 0 0 1 .1
+/vis/geometry/set/colour source_log 0 1 0 0 .3
+/vis/geometry/set/colour frontChamber_log 0 1 0 0 .1
+/vis/viewer/set/style surface
+/vis/viewer/set/hiddenMarker true
+/vis/viewer/set/viewpointThetaPhi 120 150
+#
+# Re-establish auto refreshing and verbosity:
+/vis/viewer/set/autoRefresh true
+/vis/verbose 0
+#/vis/verbose 0
+#
+# For file-based drivers, use this to create an empty detector view:
+#/vis/viewer/flush
+
+
+##########################################
+/vis/geometry/set/colour 1 0 1 0 0 .1
+/vis/geometry/set/colour 2 0 1 0 0 .1
+/vis/geometry/set/colour 3 0 1 0 0 .1
+/vis/geometry/set/colour 4 0 1 0 0 .1
+/vis/geometry/set/colour 5 0 1 0 0 .1
+/vis/geometry/set/colour 6 0 1 0 0 .1
+/vis/geometry/set/colour 7 0 1 0 0 .1
+/vis/geometry/set/colour 8 0 1 0 0 .1
+/vis/geometry/set/colour 9 0 1 0 0 .1
+/vis/geometry/set/colour 10 0 1 0 0 .1
+/vis/geometry/set/colour 11 0 1 0 0 .1
+/vis/geometry/set/colour 12 0 1 0 0 .1
+/vis/geometry/set/colour 13 0 1 0 0 .1
+/vis/geometry/set/colour 14 0 1 0 0 .1
+/vis/geometry/set/colour 15 0 1 0 0 .1
+/vis/geometry/set/colour 16 0 1 0 0 .1
+/vis/geometry/set/colour 17 0 1 0 0 .1
+/vis/geometry/set/colour 18 0 1 0 0 .1
+/vis/geometry/set/colour 19 0 1 0 0 .1
+/vis/geometry/set/colour 20 0 1 0 0 .1
+/vis/geometry/set/colour 21 0 1 0 0 .1
+/vis/geometry/set/colour 22 0 1 0 0 .1
+/vis/geometry/set/colour 23 0 1 0 0 .1
+/vis/geometry/set/colour 24 0 1 0 0 .1
+/vis/geometry/set/colour 25 0 1 0 0 .1
+/vis/geometry/set/colour 26 0 1 0 0 .1
+/vis/geometry/set/colour 27 0 1 0 0 .1
+/vis/geometry/set/colour 28 0 1 0 0 .1
+/vis/geometry/set/colour 29 0 1 0 0 .1
+/vis/geometry/set/colour 30 0 1 0 0 .1
+/vis/geometry/set/colour 31 0 1 0 0 .1
+/vis/geometry/set/colour 32 0 1 0 0 .1
+/vis/geometry/set/colour 33 0 1 0 0 .1
+/vis/geometry/set/colour 34 0 1 0 0 .1
+/vis/geometry/set/colour 35 0 1 0 0 .1
+/vis/geometry/set/colour 36 0 1 0 0 .1
+/vis/geometry/set/colour 37 0 1 0 0 .1
+/vis/geometry/set/colour 38 0 1 0 0 .1
+/vis/geometry/set/colour 39 0 1 0 0 .1
+/vis/geometry/set/colour 40 0 1 0 0 .1
+/vis/geometry/set/colour 41 0 1 0 0 .1
+/vis/geometry/set/colour 42 0 1 0 0 .1
+/vis/geometry/set/colour 43 0 1 0 0 .1
+/vis/geometry/set/colour 44 0 1 0 0 .1
+/vis/geometry/set/colour 45 0 1 0 0 .1
+/vis/geometry/set/colour 46 0 1 0 0 .1
+/vis/geometry/set/colour 47 0 1 0 0 .1
+/vis/geometry/set/colour 48 0 1 0 0 .1
+/vis/geometry/set/colour 49 0 1 0 0 .1
+/vis/geometry/set/colour 50 0 1 0 0 .1
+/vis/geometry/set/colour 51 0 1 0 0 .1
+/vis/geometry/set/colour 52 0 1 0 0 .1
+/vis/geometry/set/colour 53 0 1 0 0 .1
+/vis/geometry/set/colour 54 0 1 0 0 .1
+/vis/geometry/set/colour 55 0 1 0 0 .1
+/vis/geometry/set/colour 56 0 1 0 0 .1
+/vis/geometry/set/colour 57 0 1 0 0 .1
+/vis/geometry/set/colour 58 0 1 0 0 .1
+/vis/geometry/set/colour 59 0 1 0 0 .1
+/vis/geometry/set/colour 60 0 1 0 0 .1
+/vis/geometry/set/colour 61 0 1 0 0 .1
+/vis/geometry/set/colour 62 0 1 0 0 .1
+/vis/geometry/set/colour 63 0 1 0 0 .1
+/vis/geometry/set/colour 64 0 1 0 0 .1
+/vis/geometry/set/colour 65 0 1 0 0 .1
+/vis/geometry/set/colour 66 0 1 0 0 .1
+/vis/geometry/set/colour 67 0 1 0 0 .1
+/vis/geometry/set/colour 68 0 1 0 0 .1
+/vis/geometry/set/colour 69 0 1 0 0 .1
+/vis/geometry/set/colour 70 0 1 0 0 .1
+/vis/geometry/set/colour 71 0 1 0 0 .1
+/vis/geometry/set/colour 72 0 1 0 0 .1
+/vis/geometry/set/colour 73 0 1 0 0 .1
+/vis/geometry/set/colour 74 0 1 0 0 .1
+/vis/geometry/set/colour 75 0 1 0 0 .1
+/vis/geometry/set/colour 76 0 1 0 0 .1
+/vis/geometry/set/colour 77 0 1 0 0 .1
+/vis/geometry/set/colour 78 0 1 0 0 .1
+/vis/geometry/set/colour 79 0 1 0 0 .1
+/vis/geometry/set/colour 80 0 1 0 0 .1
+/vis/geometry/set/colour 81 0 1 0 0 .1
+/vis/geometry/set/colour 82 0 1 0 0 .1
+/vis/geometry/set/colour 83 0 1 0 0 .1
+/vis/geometry/set/colour 84 0 1 0 0 .1
+/vis/geometry/set/colour 85 0 1 0 0 .1
+/vis/geometry/set/colour 86 0 1 0 0 .1
+/vis/geometry/set/colour 87 0 1 0 0 .1
+/vis/geometry/set/colour 88 0 1 0 0 .1
+/vis/geometry/set/colour 89 0 1 0 0 .1
+/vis/geometry/set/colour 90 0 1 0 0 .1
+/vis/geometry/set/colour 91 0 1 0 0 .1
+/vis/geometry/set/colour 92 0 1 0 0 .1
+/vis/geometry/set/colour 93 0 1 0 0 .1
+/vis/geometry/set/colour 94 0 1 0 0 .1
+/vis/geometry/set/colour 95 0 1 0 0 .1
+/vis/geometry/set/colour 96 0 1 0 0 .1
+/vis/geometry/set/colour 97 0 1 0 0 .1
+/vis/geometry/set/colour 98 0 1 0 0 .1
+/vis/geometry/set/colour 99 0 1 0 0 .1
+/vis/geometry/set/colour 100 0 1 0 0 .1
+
+
+
+
+
+
+/vis/geometry/set/colour w1 0 0 1 1 .1
+/vis/geometry/set/colour w2 0 0 1 1 .1
+/vis/geometry/set/colour w3 0 0 1 1 .1
+/vis/geometry/set/colour w4 0 0 1 1 .1
+/vis/geometry/set/colour w5 0 0 1 1 .1
+/vis/geometry/set/colour w6 0 0 1 1 .1
+/vis/geometry/set/colour w7 0 0 1 1 .1
+/vis/geometry/set/colour w8 0 0 1 1 .1
+/vis/geometry/set/colour w9 0 0 1 1 .1
+/vis/geometry/set/colour w10 0 0 1 1 .1
+/vis/geometry/set/colour w11 0 0 1 1 .1
+/vis/geometry/set/colour w12 0 0 1 1 .1
+/vis/geometry/set/colour w13 0 0 1 1 .1
+/vis/geometry/set/colour w14 0 0 1 1 .1
+/vis/geometry/set/colour w15 0 0 1 1 .1
+/vis/geometry/set/colour w16 0 0 1 1 .1
+/vis/geometry/set/colour w17 0 0 1 1 .1
+/vis/geometry/set/colour w18 0 0 1 1 .1
+/vis/geometry/set/colour w19 0 0 1 1 .1
+/vis/geometry/set/colour w20 0 0 1 1 .1
+/vis/geometry/set/colour w21 0 0 1 1 .1
+/vis/geometry/set/colour w22 0 0 1 1 .1
+/vis/geometry/set/colour w23 0 0 1 1 .1
+/vis/geometry/set/colour w24 0 0 1 1 .1
+/vis/geometry/set/colour w25 0 0 1 1 .1
+/vis/geometry/set/colour w26 0 0 1 1 .1
+/vis/geometry/set/colour w27 0 0 1 1 .1
+/vis/geometry/set/colour w28 0 0 1 1 .1
+/vis/geometry/set/colour w29 0 0 1 1 .1
+/vis/geometry/set/colour w30 0 0 1 1 .1
+/vis/geometry/set/colour w31 0 0 1 1 .1
+/vis/geometry/set/colour w32 0 0 1 1 .1
+/vis/geometry/set/colour w33 0 0 1 1 .1
+/vis/geometry/set/colour w34 0 0 1 1 .1
+/vis/geometry/set/colour w35 0 0 1 1 .1
+/vis/geometry/set/colour w36 0 0 1 1 .1
+/vis/geometry/set/colour w37 0 0 1 1 .1
+/vis/geometry/set/colour w38 0 0 1 1 .1
+/vis/geometry/set/colour w39 0 0 1 1 .1
+/vis/geometry/set/colour w40 0 0 1 1 .1
+/vis/geometry/set/colour w41 0 0 1 1 .1
+/vis/geometry/set/colour w42 0 0 1 1 .1
+/vis/geometry/set/colour w43 0 0 1 1 .1
+/vis/geometry/set/colour w44 0 0 1 1 .1
+/vis/geometry/set/colour w45 0 0 1 1 .1
+/vis/geometry/set/colour w46 0 0 1 1 .1
+/vis/geometry/set/colour w47 0 0 1 1 .1
+/vis/geometry/set/colour w48 0 0 1 1 .1
+/vis/geometry/set/colour w49 0 0 1 1 .1
+/vis/geometry/set/colour w50 0 0 1 1 .1
+/vis/geometry/set/colour w51 0 0 1 1 .1
+/vis/geometry/set/colour w52 0 0 1 1 .1
+/vis/geometry/set/colour w53 0 0 1 1 .1
+/vis/geometry/set/colour w54 0 0 1 1 .1
+/vis/geometry/set/colour w55 0 0 1 1 .1
+/vis/geometry/set/colour w56 0 0 1 1 .1
+/vis/geometry/set/colour w57 0 0 1 1 .1
+/vis/geometry/set/colour w58 0 0 1 1 .1
+/vis/geometry/set/colour w59 0 0 1 1 .1
+/vis/geometry/set/colour w60 0 0 1 1 .1
+/vis/geometry/set/colour w61 0 0 1 1 .1
+/vis/geometry/set/colour w62 0 0 1 1 .1
+/vis/geometry/set/colour w63 0 0 1 1 .1
+/vis/geometry/set/colour w64 0 0 1 1 .1
+/vis/geometry/set/colour w65 0 0 1 1 .1
+/vis/geometry/set/colour w66 0 0 1 1 .1
+/vis/geometry/set/colour w67 0 0 1 1 .1
+/vis/geometry/set/colour w68 0 0 1 1 .1
+/vis/geometry/set/colour w69 0 0 1 1 .1
+/vis/geometry/set/colour w70 0 0 1 1 .1
+/vis/geometry/set/colour w71 0 0 1 1 .1
+/vis/geometry/set/colour w72 0 0 1 1 .1
+/vis/geometry/set/colour w73 0 0 1 1 .1
+/vis/geometry/set/colour w74 0 0 1 1 .1
+/vis/geometry/set/colour w75 0 0 1 1 .1
+/vis/geometry/set/colour w76 0 0 1 1 .1
+/vis/geometry/set/colour w77 0 0 1 1 .1
+/vis/geometry/set/colour w78 0 0 1 1 .1
+/vis/geometry/set/colour w79 0 0 1 1 .1
+/vis/geometry/set/colour w80 0 0 1 1 .1
+/vis/geometry/set/colour w81 0 0 1 1 .1
+/vis/geometry/set/colour w82 0 0 1 1 .1
+/vis/geometry/set/colour w83 0 0 1 1 .1
+/vis/geometry/set/colour w84 0 0 1 1 .1
+/vis/geometry/set/colour w85 0 0 1 1 .1
+/vis/geometry/set/colour w86 0 0 1 1 .1
+/vis/geometry/set/colour w87 0 0 1 1 .1
+/vis/geometry/set/colour w88 0 0 1 1 .1
+/vis/geometry/set/colour w89 0 0 1 1 .1
+/vis/geometry/set/colour w90 0 0 1 1 .1
+/vis/geometry/set/colour w91 0 0 1 1 .1
+/vis/geometry/set/colour w92 0 0 1 1 .1
+/vis/geometry/set/colour w93 0 0 1 1 .1
+/vis/geometry/set/colour w94 0 0 1 1 .1
+/vis/geometry/set/colour w95 0 0 1 1 .1
+/vis/geometry/set/colour w96 0 0 1 1 .1
+/vis/geometry/set/colour w97 0 0 1 1 .1
+/vis/geometry/set/colour w98 0 0 1 1 .1
+/vis/geometry/set/colour w99 0 0 1 1 .1
+/vis/geometry/set/colour w100 0 0 1 1 .1
